@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th=http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Page home | Gestion des employées</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+<div align="center">
+    <div><h2>Gestion des employés</h2></div>
+    <di>
+        <a>Ajouter un nouveau employé</a>
+    </di>
+    <div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom COMPLET</th>
+                <th>Email</th>
+                <th>Fonction</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="employe : ${ListEmp}">
+                <tr>
+                    <td>[[${empolye.id}]]</td>
+                    <td>[[${employe.nom}]]</td>
+                    <td>[[${employe.email}]]</td>
+                    <td>[[${employe.fonction}]]</td>
+                    <td>
+                        <a th:href="@{'employe/edit/' +${employe.id}" >Modifier</a>
+                        <a th:href="@{'employe/delete/' +${employe.id}" >Supprimer</a>
+                    </td>
+
+                </tr>
+
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>
